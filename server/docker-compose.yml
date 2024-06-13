@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  mongodb_cantainer:
+    image: mongo:latest
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: db
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_ROOT_USERNAME: root
+    ports:
+      # <Port exposed> : < Mongo db Port running inside container>
+      - 27017:27017
+    volumes:
+      - /home:/data/db
+# Names our volume
+volumes:
+  mongodb_data_container:

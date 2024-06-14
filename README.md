@@ -26,8 +26,6 @@ This Todo Application is a simple yet effective task management tool built using
 
 ## Folder Structure
 
-> **A:** Because you don't want to test the code, you want to test the *program*.
-
     .
     ├── client // frontend
         ├── public

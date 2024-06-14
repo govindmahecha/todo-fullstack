@@ -51,6 +51,19 @@ This Todo Application is a simple yet effective task management tool built using
 
 ## Setting Up
 
+1. **setup environment**: create .env file in both server and client directory and add environment variables as defined below.
+- client environment variables:
+    ```bash
+    REACT_APP_FIREBASE_API_KEY=AIzaSyB2xQyW4tKNLwuj-DcAlKV0DjFwTcVXquw
+    REACT_APP_FIREBASE__AUTH_DOMAIN=todo-board-a8642.firebaseapp.com
+    REACT_APP_FIREBASE_PROJECTID=todo-board-a8642
+    REACT_APP_STORAGE_BUCKET=todo-board-a8642.appspot.com
+    REACT_APP_MESSAGING_SENDERID=892645279224
+    REACT_APP_APPID=1:892645279224:web:b6eb76611ef81f50e2c20d
+    REACT_APP_API=http://localhost:8080
+- server environment variables:
+    ```bash
+    MONGO_DB=mongodb+srv://mahechahome:BW9vZQkE5ZQDwopS@todocluster.gqdi4pa.mongodb.net/todos?retryWrites=true&w=majority&appName=todoCluster
 1. **Install Dependencies**:
 
     - Navigate to the client directory and install frontend dependencies:

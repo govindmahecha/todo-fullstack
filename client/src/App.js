@@ -5,14 +5,11 @@ import { initializeApp } from "firebase/app";
 import MyRouter from './router';
 import { useStore } from 'react-redux';
 import { setUpInterceptor } from './axios.interceptor';
-// import { store } from './redux/store';
-// import { Provider } from 'react-redux';
 
 
 export default function App() {
 
   // firebase init 
-
   const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: process.env.REACT_APP_FIREBASE__AUTH_DOMAIN,

@@ -13,7 +13,7 @@ import { Formik, Form, Field } from "formik";
 import { CircularProgress } from "@mui/material";
 import { firebaseError } from "./errors";
 import { useDispatch } from "react-redux";
-import { loginRequest} from '../../redux/userThunk'
+import { loginRequest } from '../../redux/userThunk'
 import { useNavigate } from "react-router-dom";
 import { loginValidationSchema } from "../../utils/validations";
 
@@ -43,127 +43,127 @@ function Copyright(props) {
 
 
 export default function SignInSide() {
-    const [errorCode, setErrorCode] = React.useState();
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+  const [errorCode, setErrorCode] = React.useState();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleSubmit = (values, { setSubmitting }) => {
-    
+
     setErrorCode(undefined);
     dispatch(loginRequest(values))
-    .unwrap()
-    .then((res) => {
-      navigate('/')
-    }).finally(() => {
-      setSubmitting(false);
-    })
-    
+      .unwrap()
+      .then((res) => {
+        navigate('/')
+      }).finally(() => {
+        setSubmitting(false);
+      })
+
   };
 
   return (
-  
-      <Grid container component="main" sx={{ height: "100vh" }}>
-        <CssBaseline />
-        <Grid
-          item
-          xs={false}
-          sm={4}
-          md={7}
+
+    <Grid container component="main" sx={{ height: "100vh" }}>
+      <CssBaseline />
+      <Grid
+        item
+        xs={false}
+        sm={4}
+        md={7}
+        sx={{
+          backgroundImage:
+            "url(https://source.unsplash.com/random?wallpapers)",
+          backgroundRepeat: "no-repeat",
+          backgroundColor: (t) =>
+            t.palette.mode === "light"
+              ? t.palette.grey[50]
+              : t.palette.grey[900],
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Box
           sx={{
-            backgroundImage:
-              "url(https://source.unsplash.com/random?wallpapers)",
-            backgroundRepeat: "no-repeat",
-            backgroundColor: (t) =>
-              t.palette.mode === "light"
-                ? t.palette.grey[50]
-                : t.palette.grey[900],
-            backgroundSize: "cover",
-            backgroundPosition: "center",
+            my: 8,
+            mx: 4,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
-        />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-          <Box
-            sx={{
-              my: 8,
-              mx: 4,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
+        >
+          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign in
+          </Typography>
+
+          <Formik
+            initialValues={{
+              email: "demouser@demouser.com",
+              password: "demouser",
             }}
+            validationSchema={loginValidationSchema}
+            onSubmit={handleSubmit}
           >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Sign in
-            </Typography>
-            
-              <Formik
-                initialValues={{
-                  email: "demouser@demouser.com",
-                  password: "demouser",
-                }}
-                validationSchema={loginValidationSchema}
-                onSubmit={handleSubmit}
-              >
-                {({ errors, touched, isSubmitting }) => (
-                  <Form>
-                    <Field
-                      as={TextField}
-                      name="email"
-                      margin="normal"
-                      label="Email"
-                      disable={isSubmitting}
-                      fullWidth
-                      error={errors.email && touched.email}
-                      helperText={
-                        errors.email && touched.email ? errors.email : ""
-                      }
-                    />
+            {({ errors, touched, isSubmitting }) => (
+              <Form>
+                <Field
+                  as={TextField}
+                  name="email"
+                  margin="normal"
+                  label="Email"
+                  disable={isSubmitting}
+                  fullWidth
+                  error={errors.email && touched.email}
+                  helperText={
+                    errors.email && touched.email ? errors.email : ""
+                  }
+                />
 
-                    <Field
-                      as={TextField}
-                      margin="normal"
-                      name="password"
-                      label="Password"
-                      disable={isSubmitting}
-                      type="password"
-                      fullWidth
-                      error={errors.password && touched.password}
-                      helperText={
-                        errors.password && touched.password
-                          ? errors.password
-                          : ""
-                      }
-                    />
+                <Field
+                  as={TextField}
+                  margin="normal"
+                  name="password"
+                  label="Password"
+                  disable={isSubmitting}
+                  type="password"
+                  fullWidth
+                  error={errors.password && touched.password}
+                  helperText={
+                    errors.password && touched.password
+                      ? errors.password
+                      : ""
+                  }
+                />
 
-                    <Button
-                      type="submit"
-                      fullWidth
-                      variant="contained"
-                      sx={{ mt: 3, mb: 2 }}
-                      disable={isSubmitting}
-                    >
-                        
-                      Sign In
-                      
-                    </Button>
-                    {isSubmitting && <div style={{textAlign: 'center'}}><CircularProgress size={16}  /></div>}
-                    {!!errorCode && <Typography
-      variant="body2"
-      color="error"
-      align="center"
-      
-    >{firebaseError[errorCode] || 'Woops! something went wrong'}
-        </Typography>}
-                  </Form>
-                )}
-              </Formik>
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2 }}
+                  disable={isSubmitting}
+                >
 
-              <Copyright sx={{ mt: 5 }} />
-            </Box>
-          
-        </Grid>
+                  Sign In
+
+                </Button>
+                {isSubmitting && <div style={{ textAlign: 'center' }}><CircularProgress size={16} /></div>}
+                {!!errorCode && <Typography
+                  variant="body2"
+                  color="error"
+                  align="center"
+
+                >{firebaseError[errorCode] || 'Woops! something went wrong'}
+                </Typography>}
+              </Form>
+            )}
+          </Formik>
+
+          <Copyright sx={{ mt: 5 }} />
+        </Box>
+
       </Grid>
+    </Grid>
 
   );
 }

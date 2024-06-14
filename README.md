@@ -14,6 +14,7 @@ This Todo Application is a simple yet effective task management tool built using
 - **React**: A popular JavaScript library for building user interfaces.
 - **JavaScript**: The primary programming language used for client-side scripting.
 - **Material UI**: A React UI framework that implements Google's Material Design for React components.
+- **Jest (testing)**: Jest is testing library to be used to write and run unit test cases.
 
 ### Backend
 - **Node.js**: A JavaScript runtime built on Chrome's V8 JavaScript engine.
@@ -25,24 +26,34 @@ This Todo Application is a simple yet effective task management tool built using
 
 ## Folder Structure
 
-/
+> **A:** Because you don't want to test the code, you want to test the *program*.
 
-├── client/ # Frontend code
-
-└── server/ # Backend code
-
+    .
+    ├── client // frontend
+        ├── public
+        ├── package.json
+        └── src
+            ├── pages  # pages 
+            ├── redux  # redux store, reducer and thunk
+            ├── router # routes ( public and auth)
+            ├── utils  # utilities ( constaints, validators)
+            ├── components # reusable components
+            └── ...
+    ├── server // backend
+        ├── controllers # handle request and return response  
+        ├── models # mongodb schema models 
+        ├── routes # define all endpoints and request method
+        ├── firebase-serviceaccount.json # firebase access file
+        ├── server.js # server configuration
+        └── ...
 
 
 - **client**: Contains all the frontend code of the application, including React components, styles, and assets.
-- **server**: Houses the backend logic, including APIs, database configurations, and authentication setup.
+- **server**: the backend logic, including APIs, database configurations, and authentication setup.
 
 ## Setting Up
 
-1. **Clone the Repository**: 
-        ```bash
-        git clone <repository-url>
-
-2. **Install Dependencies**:
+1. **Install Dependencies**:
 
     - Navigate to the client directory and install frontend dependencies:
         ```bash
@@ -53,17 +64,22 @@ This Todo Application is a simple yet effective task management tool built using
         ```bash
         cd ../server
         npm install
-
- 3. Run the Application:
+ 2. Run the Application:
     - Start the frontend development server
         ```bash
         npm start
-
     - Start the backend development server 
         ```bash
         npm run dev
+  3. Run Tests:
+  
+    - frontend
+     ```bash
+     npm run test // to run tests
+     npm run test:coverage // to check code coverage   
 
-        Access the Application:
+
+**Access the Application**
 
 Once both frontend and backend servers are running, you can access the application by navigating to http://localhost:3000 in your web browser.and backend will be on http://localhost:8080
 

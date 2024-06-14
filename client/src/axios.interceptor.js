@@ -1,4 +1,4 @@
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 
 export const setUpInterceptor = (store) => {
   const handleError = async (error) => {
@@ -12,8 +12,7 @@ export const setUpInterceptor = (store) => {
     return Promise.reject(error?.response?.data || error?.response || error)
   }
 
-
-
+  // request interceptor to attach access token for every request
   axios.interceptors.request.use(
     async (config) => {
       const token = store?.getState()?.auth?.user?.accessToken
